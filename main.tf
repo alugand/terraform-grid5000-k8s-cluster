@@ -53,7 +53,7 @@ resource "null_resource" "docker_install" {
 
   provisioner "remote-exec" {
     inline = [
-      "sh /root/install-docker.sh",
+      "sh /root/install-docker.sh >/dev/null 2>&1",
     ]
   }
 }

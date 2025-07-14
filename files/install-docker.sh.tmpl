@@ -6,6 +6,9 @@ set -ex
 DOCKER_VERSION="19.03.14"
 CONTAINERD_VERSION="1.4.3"
 
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+
+
 # Use iptables legacy (Only for Debian 10)
 #
 update-alternatives --set iptables /usr/sbin/iptables-legacy
@@ -15,7 +18,7 @@ apt update
 
 # Requirements
 #
-apt-get install -y apt-transport-https ca-certificates curl software-properties-common gnupg ${join(" ", pkgs)}
+apt-get install -y --allow-unauthenticated apt-transport-https ca-certificates curl software-properties-common gnupg ${join(" ", pkgs)}
 
 # Install Docker
 #

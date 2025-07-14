@@ -8,7 +8,15 @@ CONTAINERD_VERSION="1.4.3"
 
 cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
+# Création d'un nouveau fichier sources.list pointant vers l'archive Debian
+cat << EOF > /etc/apt/sources.list
+deb http://archive.debian.org/debian/ buster main contrib non-free
+deb http://archive.debian.org/debian/ buster-updates main contrib non-free
+deb http://archive.debian.org/debian-security buster/updates main contrib non-free
+deb http://archive.debian.org/debian buster-backports main contrib non-free
+EOF
 
+# --- FIN DE LA CORRECTION APT ---
 # Use iptables legacy (Only for Debian 10)
 #
 update-alternatives --set iptables /usr/sbin/iptables-legacy
